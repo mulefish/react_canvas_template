@@ -54,9 +54,11 @@ class App extends React.Component {
       <div>
       <button onClick={this.fetchDataButton} >zoom</button>
       <hr></hr>
-      <div id="wrapper">
+    <div id="scrollingViewport">
+      <div id="wrapper" width={this.w} height={this.h}>
         <canvas id="background" width={this.w} height={this.h} ></canvas> 
         <canvas id="foreground" width={this.w} height={this.w} ></canvas> 
+      </div>
       </div>
       <hr></hr>
       </div>
