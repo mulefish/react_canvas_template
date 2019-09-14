@@ -3,14 +3,11 @@
     overflow-y:hidden;
     border-style: solid;
     border-width: 1px 1px 1px 1px;
-    border-color:#00f0ff;
+    border-color:#e0e0e0;
 }
 
 #wrapper {
     position: relative;
-    border-style: solid;
-    border-width: 1px 1px 1px 1px;
-
 }
 #background {}
 #foreground {
