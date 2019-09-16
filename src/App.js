@@ -1,67 +1,35 @@
 import React from 'react';
 import './style.css';
-import {sayHi, fgClick,fgMouseUp,fgMouseDown, fgMouseMove} from './logic.js'
+import BackgroundCanvas from './BackgroundCanvas.js'
+import ForegroundCanvas from './ForegroundCanvas.js'
+import {getCities} from './cities.js'
 
 class App extends React.Component {
-	constructor(props) {
-    super(props);
-    this.fetchDataButton = this.fetchDataButton.bind(this);
-    this.w = window.innerWidth;
-    this.h = window.innerHeight * 0.6;
-    this.state = {
-      data:{}
-    }
+  constructor(props) {
+    super(props)
+    this.w = window.innerWidth * .99;
+    this.h = window.innerHeight * .71;
+
+    this.cities = getCities(this.w, this.h)
   }
-  componentDidMount() { 
-    this.bgCanvas = document.getElementById("background");
-    this.bg = this.bgCanvas.getContext("2d");
-    this.bg.moveTo(0, 0);
-    this.bg.lineTo(200, 100);
-    this.bg.stroke(); 
 
-    this.fgCanvas = document.getElementById("foreground");
+  render() {     
+    const bgId = "background";
+    const fgId = "foreground";
 
-    this.fgCanvas.addEventListener('click', function(evt) {
-      fgClick(evt)
-    }, false);
-
-    this.fgCanvas.addEventListener('mouseup', function(evt) {
-      fgMouseUp(evt)
-    }, false);
-
-    this.fgCanvas.addEventListener('mousedown', function(evt) {
-      fgMouseDown(evt)
-    }, false);
-
-    this.fgCanvas.addEventListener('mousemove', function(evt){
-      fgMouseMove(evt)
-    }, false);
-
-
-
-
-    this.fg = this.fgCanvas.getContext("2d");
-    this.fg.beginPath();
-    this.fg.arc(95, 50, 40, 0, 2 * Math.PI);
-    this.fg.stroke(); 
-  }
-  fetchDataButton() {
-    console.log("hello ")
-    sayHi()
-  }
-  render() { 
     return (
       <div>
-      <button onClick={this.fetchDataButton} >zoom</button>
-      <hr></hr>
-    <div id="scrollingViewport">
-      <div id="wrapper" width={this.w} height={this.h}>
-        <canvas id="background" width={this.w} height={this.h} ></canvas> 
-        <canvas id="foreground" width={this.w} height={this.w} ></canvas> 
-      </div>
-      </div>
-      <hr></hr>
-      </div>
+        Goat
+      <div className="scrollingViewport">
+        <div className="wrapper">
+        <BackgroundCanvas cities={this.cities} w={this.w} h={this.h} id={bgId} />
+        <ForegroundCanvas w={this.w} h={this.h} id={fgId} />
+        </div>
+        </div>
+        <hr>
+        </hr>
+        Hello world
+        </div>
     )
   }
 }
