@@ -1,0 +1,14 @@
+#wrapper {
+    position: relative;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+}
+#background {}
+#foreground {
+    position: absolute;
+    top:0px;
+    left:0px;
+    z-index: 2;
+}
+
+/*# sourceMappingURL=/src.a2b27638.css.map */

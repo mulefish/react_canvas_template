@@ -12,6 +12,7 @@ class App extends React.Component {
       data:{}
     }
   }
+
   componentDidMount() { 
     this.bgCanvas = document.getElementById("background");
     this.bg = this.bgCanvas.getContext("2d");
@@ -24,15 +25,32 @@ class App extends React.Component {
     this.fg.beginPath();
     this.fg.arc(95, 50, 40, 0, 2 * Math.PI);
     this.fg.stroke(); 
+
+    this.fgCanvas.onmousedown = this.mymousedown
+    this.fgCanvas.onmousemove = this.mymousemove
+    this.fgCanvas.onmouseup = this.mymouseup
+  
+
   }
+
+  mymousedown() { 
+    console.log( " down ")
+  }
+
+  mymousemove() { 
+    console.log( " mymousemove ")
+  }
+  mymouseup() { 
+    console.log( " mymouseup ")
+  }
+
   fetchDataButton() {
-    console.log("hello ")
+    console.log("hello2sdf ")
     sayHi()
   }
   render() { 
     return (
       <div>
-      <button onClick={this.fetchDataButton} >zoom</button>
       <hr></hr>
       <div id="wrapper">
         <canvas id="background" width={this.w} height={this.h} ></canvas> 
